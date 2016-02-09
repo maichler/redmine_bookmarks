@@ -1,5 +1,14 @@
 
-<%= error_messages_for :category %>
+<!--%= error_messages_for :category %-->
+<% if @category.errors.any? %>
+    <div id="errorExplanation">
+      <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
 <%= hidden_field_tag 'category[user_id]', User.current.id %>
 <div class="box tabular">
 <p><%= f.text_field :name, :required => true, :size => 60 %></p>
