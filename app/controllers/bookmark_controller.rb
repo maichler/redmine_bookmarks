@@ -57,14 +57,14 @@ class BookmarkController < ApplicationController
   end
 
   def edit_category
-    if request.post? and @category.update_attributes(params[:category])
+    if request.put? and @category.update_attributes(params[:category])
       flash[:notice] = l(:notice_successful_update)
       redirect_to :controller => 'bookmark', :action => 'view_categories'
     end
   end
   
   def edit_link
-    if request.post? and @link.update_attributes(params[:link])
+    if request.put? and @link.update_attributes(params[:link])
       flash[:notice] = l(:notice_successful_update)
       redirect_to :controller => 'bookmark', :action => 'index'
     end
