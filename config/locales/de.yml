@@ -1,6 +1,6 @@
 de:
     bookmarks_box: Lesezeichen
-    field_global: Global link
+    field_global: Globales Lesezeichen
     field_label: Label
     permission_view_bookmarks: View Bookmarks
     permission_view_admin_links: View and use admin links
@@ -14,38 +14,38 @@ de:
     bookmarks:
         views:
             view_categories:
-                title: Index of categories for my page bookmark
-                return_index: return to links
+                title: Verzeichnis der Kategorien für Meine Seite
+                return_index: zurück zu Lesezeichen
             index:
-                title: Links manager for my page bookmark
-                add_link: Add a link
-                add_category: Add a category
-                view_categories: View categories
+                title: Lesezeichen für Meine Seite verwalten
+                add_link: Lesezeichen hinzufügen
+                add_category: Kategorie hinzufügen
+                view_categories: Kategorien ansehen
             link:
                 label: Label
                 url: URL
-                category: Category
-                description: Description
-                global: Global link
-                admin: Admin Only Link
-                created_on: Creation date
-                updated_on: Updating date
-                user: User
+                category: Kategorie
+                description: Beschreibung
+                global: Global
+                admin: Administrativ
+                created_on: Erstellt
+                updated_on: Aktualisiert
+                user: Benutzer
             category:
-                name: Name of the category
-                description: Description
-                global: Global cat.
-                admin: Admin cat.
-                created_on: Creation date
-                updated_on: Updating date
-                user: User
+                name: Name
+                description: Beschreibung
+                global: Global
+                admin: Administrativ
+                created_on: Erstellt
+                updated_on: Aktualisiert
+                user: Benutzer
             add_link:
-                title: Adding a link
+                title: Lesezeichen hinzufügen
             edit_link:
-                    title: Edit a link
-            add_button: Add
-            edit_button: Edit
+                    title: Lesezeichen bearbeiten
+            add_button: Hinzufügen
+            edit_button: Bearbeiten
             add_category:
-                title: Adding a category
+                title: Kategorie hinzufügen
             edit_category:
-                    title: Edit a category
+                    title: Kategorie bearbeiten
