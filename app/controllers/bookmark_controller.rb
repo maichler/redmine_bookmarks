@@ -9,13 +9,15 @@ class BookmarkController < ApplicationController
   def index   
     sort_init 'label','asc'
     sort_update %w(label description category_id url global admin created_at updated_at user_id)
-    c = ARCondition.new(User.current.admin? ? ["global = 1 or user_id = #{User.current.id}"] : [ "(user_id = #{User.current.id} OR global = 1) AND admin = 0"]) 
-    @link_count = Link.count(:conditions => c.conditions)
+
+    conditions = User.current.admin ? "global = 1 or user_id = #{User.current.id}" : "(user_id = #{User.current.id} OR global = 1) AND admin = 0"
+
+    @link_count = Link.count(:conditions => conditions)
     @link_pages = Paginator.new self, @link_count,
 								per_page_option,
 								params['page']								
     @links =  Link.find :all,:order => sort_clause,
-                        :conditions => c.conditions,
+                        :conditions => conditions,
 						            :limit  =>  @link_pages.items_per_page,
 						            :offset =>  @link_pages.current.offset
     render :layout => !request.xhr?	
@@ -24,13 +26,19 @@ class BookmarkController < ApplicationController
   def view_categories
     sort_init 'name','asc'
     sort_update %w(name description global created_at updated_at user_id)
-    c = ARCondition.new(User.current.admin? ? ["global = 1 or user_id = #{User.current.id}"] :  [ "(user_id = #{User.current.id} OR global = 1) AND admin = 0"]) 
-    @category_count = Category.count(:conditions => c.conditions)
+
+    if User.current.admin?
+      conditions = "global = 1 or user_id = #{User.current.id}"
+    else
+      conditions = "(user_id = #{User.current.id} OR global = 1) AND admin = 0"
+    end
+
+    @category_count = Category.count(:conditions => conditions)
     @category_pages = Paginator.new self, @category_count,
 								per_page_option,
 								params['page']								
     @categories =  Category.find :all,:order => sort_clause,
-                        :conditions => c.conditions,
+                        :conditions => conditions,
 						            :limit  =>  @category_pages.items_per_page,
 						            :offset =>  @category_pages.current.offset
     render :layout => !request.xhr?
